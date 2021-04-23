@@ -2,6 +2,10 @@
   display: none;
 }
 
+.d_block {
+  display: block;
+}
+
 .v_hidden {
   visibility: hidden;
 }

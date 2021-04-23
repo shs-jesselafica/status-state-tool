@@ -1,8 +1,9 @@
 import { useState, useRef } from "react";
 import Card from "./ui/Card";
-import Input from "./ui/Input";
+import InputWrapper from "./ui/InputWrapper";
 
 import "./AdditionalWebFields.css";
+import SamplePostBody from "./SamplePostBody";
 
 const AdditionalWebFields = (props) => {
   const [webData, setWebData] = useState({
@@ -29,54 +30,80 @@ const AdditionalWebFields = (props) => {
     setWebData({
       ...inputDataObj,
     });
-    props.onWebDataChange(inputDataObj);
   };
 
   return (
     <Card>
       <div className="web-fields-wrapper">
         <h2>Additional Web Fields:</h2>
-        <Input
-          type="number"
-          name="id"
-          ref={idRef}
-          label="Device ID"
-          val={webData.id}
-          isChanged={onChangeHandler}
-        />
-        <Input
-          type="text"
-          name="key"
-          ref={keyRef}
-          label="Key"
-          val={webData.key}
-          isChanged={onChangeHandler}
-        />
-        <Input
-          type="number"
+        <InputWrapper name="id" label="Device ID">
+          <input
+            name="id"
+            ref={idRef}
+            type="number"
+            value={webData.id}
+            min="0"
+            max="999999999"
+            onChange={onChangeHandler}
+          />
+        </InputWrapper>
+
+        <InputWrapper name="key" label="Key">
+          <input
+            name="key"
+            ref={keyRef}
+            type="text"
+            value={webData.key}
+            onChange={onChangeHandler}
+          />
+        </InputWrapper>
+
+        <InputWrapper
           name="curVal"
-          ref={curValRef}
-          label="Flow %"
-          val={webData.cur_val}
-          isChanged={onChangeHandler}
-        />
-        <Input
-          type="number"
+          label={props.statusState & 2048 ? "POLD ID" : "Flow %"}
+        >
+          <input
+            name="curVal"
+            ref={curValRef}
+            type="number"
+            value={webData.cur_val}
+            min="0"
+            max="255"
+            onChange={onChangeHandler}
+          />
+        </InputWrapper>
+
+        <InputWrapper
           name="tripTime"
-          ref={tripTimeRef}
-          label="Trip Time"
-          val={webData.trip_time}
-          isChanged={onChangeHandler}
-        />
-        <Input
-          type="number"
+          label={props.statusState & 2048 ? "Alarm Mins" : "Trip Time"}
+        >
+          <input
+            name="tripTime"
+            ref={tripTimeRef}
+            type="number"
+            value={webData.trip_time}
+            min="0"
+            max="255"
+            onChange={onChangeHandler}
+          />
+        </InputWrapper>
+
+        <InputWrapper
           name="tripRate"
-          ref={tripRateRef}
-          label="Trip Rate"
-          val={webData.trip_val}
-          isChanged={onChangeHandler}
-        />
+          label={props.statusState & 2048 ? "Battery Level" : "Trip Rate"}
+        >
+          <input
+            name="tripRate"
+            ref={tripRateRef}
+            type="number"
+            value={webData.trip_val}
+            min="0"
+            max="255"
+            onChange={onChangeHandler}
+          />
+        </InputWrapper>
       </div>
+      <SamplePostBody webData={webData} statusState={props.statusState} />
     </Card>
   );
 };

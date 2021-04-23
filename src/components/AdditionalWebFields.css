@@ -1,6 +1,11 @@
 .web-fields-wrapper input {
   text-align: center;
   margin: auto;
+  margin: 0.25rem;
+}
+
+.web-fields-wrapper h2 {
+  text-align: center;
 }
 
 /* Row */

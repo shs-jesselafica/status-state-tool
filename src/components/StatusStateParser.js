@@ -1,10 +1,8 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
-import Input from "./ui/Input";
+import InputWrapper from "./ui/InputWrapper";
 import Card from "./ui/Card";
 import Row from "./ui/Row";
-
-import "./ui/Input.css";
 
 const StatusStateParser = (props) => {
   const [statusState, setStatusState] = useState(0);
@@ -115,6 +113,11 @@ const StatusStateParser = (props) => {
     setStatusState(statusStateInputVal);
   };
 
+  // Check first radio when component mounts
+  useEffect(() => {
+    statusStateRefs[0].ref.current.checked = true;
+  }, []);
+
   return (
     <Card>
       <h2>Status State Builder:</h2>
@@ -136,15 +139,20 @@ const StatusStateParser = (props) => {
       </Row>
 
       {statusStateRefs.map((el, ind) => (
-        <Input
+        <InputWrapper
           label={el.label}
           key={el.label}
           decimalValue={el.val}
-          isChanged={calcStatusState}
-          ref={el.ref}
-          type={el.type}
           name={el.name || ""}
-        />
+        >
+          <input
+            type={el.type}
+            name={el.name}
+            ref={el.ref}
+            value={props.val || ""}
+            onChange={calcStatusState}
+          />
+        </InputWrapper>
       ))}
     </Card>
   );
