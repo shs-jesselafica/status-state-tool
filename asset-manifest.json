@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/status-state-tool/static/css/main.afd9700f.chunk.css",
+    "main.js": "/status-state-tool/static/js/main.7469ed52.chunk.js",
+    "main.js.map": "/status-state-tool/static/js/main.7469ed52.chunk.js.map",
+    "runtime-main.js": "/status-state-tool/static/js/runtime-main.7eaaea5f.js",
+    "runtime-main.js.map": "/status-state-tool/static/js/runtime-main.7eaaea5f.js.map",
+    "static/js/2.844f5aa4.chunk.js": "/status-state-tool/static/js/2.844f5aa4.chunk.js",
+    "static/js/2.844f5aa4.chunk.js.map": "/status-state-tool/static/js/2.844f5aa4.chunk.js.map",
+    "static/js/3.1c45f484.chunk.js": "/status-state-tool/static/js/3.1c45f484.chunk.js",
+    "static/js/3.1c45f484.chunk.js.map": "/status-state-tool/static/js/3.1c45f484.chunk.js.map",
+    "index.html": "/status-state-tool/index.html",
+    "static/css/main.afd9700f.chunk.css.map": "/status-state-tool/static/css/main.afd9700f.chunk.css.map",
+    "static/js/2.844f5aa4.chunk.js.LICENSE.txt": "/status-state-tool/static/js/2.844f5aa4.chunk.js.LICENSE.txt",
+    "static/media/lds-logo-white.461a7d0c.png": "/status-state-tool/static/media/lds-logo-white.461a7d0c.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7eaaea5f.js",
+    "static/js/2.844f5aa4.chunk.js",
+    "static/css/main.afd9700f.chunk.css",
+    "static/js/main.7469ed52.chunk.js"
+  ]
+}
