@@ -5,5 +5,8 @@
   border-radius: 15px;
   padding: 0.5rem;
   display: inline-block;
-  margin: 1rem
+  margin: 1rem;
+  width: 290px;
+  height: 550px;
+  text-align: center;
 }

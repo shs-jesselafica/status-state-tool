@@ -1,6 +1,6 @@
-import Row from "./Row";
+import Row from "../Row/Row";
 import "./InputWrapper.css";
-import utilities from "./Utilities.module.css";
+import utilities from "../Utilities.module.css";
 
 const Input = (props) => {
 

@@ -4,10 +4,12 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import {StatusStateContextProvider} from './store/status-state-context';
+
 ReactDOM.render(
-  <React.StrictMode>
+  <StatusStateContextProvider>
     <App />
-  </React.StrictMode>,
+  </StatusStateContextProvider>,
   document.getElementById('root')
 );
 

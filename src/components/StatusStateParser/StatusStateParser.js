@@ -1,11 +1,16 @@
-import { useState, useRef, useEffect } from "react";
+import { useRef, useEffect, useContext } from "react";
 
-import InputWrapper from "./ui/InputWrapper";
-import Card from "./ui/Card";
-import Row from "./ui/Row";
+import InputWrapper from "../UI/InputWrapper/InputWrapper";
+import Card from "../UI/Card/Card";
+import Row from "../UI/Row/Row";
+import StatusStateContext from "../../store/status-state-context";
+
+import "./StatusStateParser.css";
 
 const StatusStateParser = (props) => {
-  const [statusState, setStatusState] = useState(0);
+  // const [statusState, setStatusState] = useState(0);
+
+  const ssCtx = useContext(StatusStateContext);
 
   const statusStateRefs = [
     {
@@ -89,8 +94,7 @@ const StatusStateParser = (props) => {
       if (refObj.checked) newStatusState += el.val;
     });
 
-    props.onStatusStateChange(newStatusState);
-    setStatusState(newStatusState);
+    ssCtx.onChange(newStatusState);
   };
 
   const updateCheckboxes = () => {
@@ -109,8 +113,7 @@ const StatusStateParser = (props) => {
       }
     });
 
-    props.onStatusStateChange(statusStateInputVal);
-    setStatusState(statusStateInputVal);
+    ssCtx.onChange(statusStateInputVal);
   };
 
   // Check first radio when component mounts
@@ -129,11 +132,11 @@ const StatusStateParser = (props) => {
           type="number"
           name="status-state"
           ref={statusStateInput}
-          value={statusState}
+          value={ssCtx.value}
           onChange={updateCheckboxes}
           max="65535"
           min="0"
-          val={statusState}
+          val={ssCtx.value}
           onFocus={(e) => e.currentTarget.select()}
         />
       </Row>

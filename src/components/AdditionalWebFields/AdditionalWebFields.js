@@ -1,9 +1,10 @@
-import { useState, useRef } from "react";
-import Card from "./ui/Card";
-import InputWrapper from "./ui/InputWrapper";
+import { useState, useRef, useContext } from "react";
+import Card from "../UI/Card/Card";
+import InputWrapper from "../UI/InputWrapper/InputWrapper";
 
 import "./AdditionalWebFields.css";
-import SamplePostBody from "./SamplePostBody";
+import SamplePostBody from "../SamplePostBody/SamplePostBody";
+import StatusStateContext from "../../store/status-state-context";
 
 const AdditionalWebFields = (props) => {
   const [webData, setWebData] = useState({
@@ -31,6 +32,8 @@ const AdditionalWebFields = (props) => {
       ...inputDataObj,
     });
   };
+
+  const ssCtx = useContext(StatusStateContext);
 
   return (
     <Card>
@@ -60,7 +63,7 @@ const AdditionalWebFields = (props) => {
 
         <InputWrapper
           name="curVal"
-          label={props.statusState & 2048 ? "POLD ID" : "Flow %"}
+          label={ssCtx.value & 2048 ? "POLD ID" : "Flow %"}
         >
           <input
             name="curVal"
@@ -75,7 +78,7 @@ const AdditionalWebFields = (props) => {
 
         <InputWrapper
           name="tripTime"
-          label={props.statusState & 2048 ? "Alarm Mins" : "Trip Time"}
+          label={ssCtx.value & 2048 ? "Alarm Mins" : "Trip Time"}
         >
           <input
             name="tripTime"
@@ -90,7 +93,7 @@ const AdditionalWebFields = (props) => {
 
         <InputWrapper
           name="tripRate"
-          label={props.statusState & 2048 ? "Battery Level" : "Trip Rate"}
+          label={ssCtx.value & 2048 ? "Battery Level" : "Trip Rate"}
         >
           <input
             name="tripRate"
@@ -103,7 +106,7 @@ const AdditionalWebFields = (props) => {
           />
         </InputWrapper>
       </div>
-      <SamplePostBody webData={webData} statusState={props.statusState} />
+      <SamplePostBody webData={webData} />
     </Card>
   );
 };
